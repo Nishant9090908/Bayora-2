@@ -1,0 +1,35 @@
+{
+  "name": "bayora-main",
+  "version": "1.0.0",
+  "description": "![Security Posture](https://img.shields.io/badge/Security_Enclave-Level--4_Isolated-0284c7) ![Tests](https://img.shields.io/badge/Tests-12%2F12_Passing-10b981) ![Provenance](https://img.shields.io/badge/Provenance-SHA--256_Verifiable-8b5cf6) ![RBAC](https://img.shields.io/badge/RBAC-Backend--Enforced-ef4444)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node backend/src/server.js",
+    "test": "jest --runInBand --detectOpenHandles"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 15000
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.1",
+    "pg-mem": "^3.0.14"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.1"
+  }
+}

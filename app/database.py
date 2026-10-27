@@ -1,0 +1,28 @@
+"""
+Database setup for Bayora using SQLAlchemy.
+Configured for SQLite by default with thread safety.
+"""
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
+from app.config import settings
+
+# For SQLite, check_same_thread=False allows FastAPI multi-threaded requests
+connect_args = {"check_same_thread": False} if settings.DATABASE_URL.startswith("sqlite") else {}
+
+engine = create_engine(
+    settings.DATABASE_URL,
+    connect_args=connect_args,
+    echo=False
+)
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+def get_db():
+    """Dependency for yielding a scoped database session."""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

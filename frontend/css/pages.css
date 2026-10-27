@@ -1,0 +1,439 @@
+/* ==========================================================================
+   BAYORA DESIGN SYSTEM - PAGE-SPECIFIC LAYOUTS
+   ========================================================================== */
+
+/* 1. LANDING PAGE HERO */
+.landing-hero {
+  padding: var(--space-12) 0 var(--space-10);
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  background-color: var(--color-blue-subtle);
+  border: 1px solid var(--color-blue-border);
+  color: var(--color-blue-text);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-5);
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+.hero-title span {
+  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+}
+
+/* Architecture Bento Tri-Pillar Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.pillar-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: var(--shadow-md), var(--card-shine);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.8;
+}
+
+.pillar-card.red::before { background: var(--color-red-gradient); }
+.pillar-card.blue::before { background: var(--color-blue-gradient); }
+.pillar-card.cyan::before { background: var(--color-emerald-gradient); }
+.pillar-card.purple::before { background: var(--color-purple-gradient); }
+
+.pillar-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-lg), var(--card-shine);
+}
+
+.pillar-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  font-size: 1.3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.pillar-icon-box.red { background-color: var(--color-red-subtle); color: var(--color-red-text); border: 1px solid var(--color-red-border); }
+.pillar-icon-box.blue { background-color: var(--color-blue-subtle); color: var(--color-blue-text); border: 1px solid var(--color-blue-border); }
+.pillar-icon-box.cyan { background-color: var(--color-emerald-subtle); color: var(--color-emerald-text); border: 1px solid var(--color-emerald-border); }
+.pillar-icon-box.purple { background-color: var(--color-purple-subtle); color: var(--color-purple-text); border: 1px solid var(--color-purple-border); }
+
+.pillar-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.pillar-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.pillar-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-4);
+}
+
+.pillar-features li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pillar-features li::before {
+  content: '▸';
+  color: var(--color-blue-text);
+  font-weight: 700;
+}
+
+/* 2. AUTH PAGES (Login & Register) */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 180px);
+  padding: var(--space-8) var(--space-4);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg), var(--card-shine);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.auth-quick-roles {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-quick-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+.quick-role-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.quick-role-btn {
+  flex: 1;
+  padding: 7px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.quick-role-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+/* 3. DASHBOARDS (RED & BLUE WORKSPACES) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.dashboard-full-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid, .dashboard-full-grid, .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workspace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.workspace-title-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 4. EVALUATION PIPELINE VISUALIZER */
+.pipeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-8);
+  margin-bottom: var(--space-6);
+  position: relative;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
+}
+
+.pipeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  min-width: 150px;
+}
+
+.step-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  margin-bottom: var(--space-2);
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.pipeline-step.success .step-circle {
+  border-color: var(--color-emerald);
+  color: var(--color-emerald-text);
+  background-color: var(--color-emerald-subtle);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.pipeline-step.blocked .step-circle {
+  border-color: var(--color-red);
+  color: var(--color-red-text);
+  background-color: var(--color-red-subtle);
+  box-shadow: 0 0 12px rgba(225, 29, 72, 0.25);
+}
+
+.pipeline-step.active .step-circle {
+  border-color: var(--color-blue);
+  color: var(--color-blue-text);
+  background-color: var(--color-blue-subtle);
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.35);
+  animation: pulse-ring 2s infinite;
+}
+
+.step-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.step-meta {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.pipeline-connector {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--border-medium), var(--border-subtle));
+  margin: 0 var(--space-2);
+  margin-bottom: 24px;
+}
+
+/* Sanitized View Projections */
+.projection-switch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.projection-pill-group {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.projection-btn {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.projection-btn.active {
+  background: var(--color-blue-gradient);
+  color: #ffffff;
+  border-color: var(--color-blue);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+.redacted-box {
+  background-color: var(--color-red-subtle);
+  border: 1px dashed var(--color-red-border);
+  color: var(--color-red-text);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.protected-box {
+  background-color: var(--color-blue-subtle);
+  border: 1px dashed var(--color-blue-border);
+  color: var(--color-blue-text);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+/* 5. SECURITY EVENT LOG & BREACH PANEL */
+.event-row-critical {
+  background-color: var(--color-red-subtle);
+}
+
+.event-row-critical:hover {
+  background-color: rgba(225, 29, 72, 0.15) !important;
+}
+
+.breach-sim-panel {
+  background: linear-gradient(135deg, var(--color-red-subtle) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--color-red-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 6. CHARTS & CANVASES */
+.chart-container {
+  width: 100%;
+  height: 220px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
