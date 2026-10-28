@@ -6,7 +6,9 @@
  */
 import { SAMPLE_DATA } from "./mock-data.js";
 
-export const API_BASE = "http://127.0.0.1:8000/api";
+export const API_BASE = (typeof window !== "undefined" && window.location && window.location.origin && (window.location.port === "8000" || window.location.port === ""))
+  ? `${window.location.origin}/api`
+  : "http://127.0.0.1:8000/api";
 
 const KNOWN_CREDS = {
   red_operator: "RedOperator2026!",
@@ -212,6 +214,55 @@ class BayoraApiClient {
       throw new Error(data.error || "Verification endpoint failed");
     }
     return { ...data, simulated: false };
+  }
+
+  async createDefense({ name, strictness, systemPrompt, bannedKeywords, regexRules, safetyThreshold }) {
+    const isOnline = await this.checkHealth();
+    if (!isOnline) {
+      return { message: "Simulated defense registered", defense: { id: `DEF-${Date.now().toString().slice(-4)}`, name, strictness } };
+    }
+
+    const token = await this.ensureAuthenticated("blue_defender");
+    const res = await fetch(`${API_BASE}/defenses`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name,
+        strictness,
+        systemPrompt,
+        bannedKeywords,
+        regexRules,
+        safetyThreshold: Number(safetyThreshold) || 0.85
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to register defense");
+    }
+    return data;
+  }
+
+  async getDefenses() {
+    const isOnline = await this.checkHealth();
+    if (!isOnline) {
+      return SAMPLE_DATA.defenseConfigs;
+    }
+
+    const token = await this.ensureAuthenticated("blue_defender");
+    try {
+      const res = await fetch(`${API_BASE}/defenses`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data.defenses || SAMPLE_DATA.defenseConfigs;
+      }
+    } catch (_) {}
+    return SAMPLE_DATA.defenseConfigs;
   }
 }
 

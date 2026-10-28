@@ -5,7 +5,7 @@
 
 /* 1. TOP NAVBAR */
 .navbar {
-  background-color: var(--bg-card);
+  background-color: #000000;
   border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
@@ -16,7 +16,7 @@
 }
 
 .nav-container {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 var(--space-8);
   height: 64px;
@@ -35,26 +35,29 @@
 
 .brand-icon {
   width: 32px;
-  height: 32px;
-  background: var(--color-blue-gradient);
-  border-radius: var(--radius-md);
+  height: 24px;
+  background: #0d0d0d;
+  border: 1.5px solid var(--color-red);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+  color: var(--color-red);
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.4);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .nav-brand:hover .brand-icon {
   transform: scale(1.05);
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.6);
+  box-shadow: 0 0 16px rgba(255, 85, 0, 0.6);
 }
 
 .brand-title {
-  font-size: 1.15rem;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -62,15 +65,15 @@
 }
 
 .brand-tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-family: 'Space Mono', var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 2px 6px;
-  background-color: var(--color-blue-subtle);
-  color: var(--color-blue-text);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-blue-border);
-  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  background-color: var(--color-red-subtle);
+  color: var(--color-red);
+  border-radius: 2px;
+  border: 1px solid var(--color-red-border);
+  letter-spacing: 0.06em;
 }
 
 .nav-links {
@@ -84,11 +87,14 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 7px 14px;
-  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  border-radius: 3px;
   color: var(--text-secondary);
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-family: 'Space Mono', var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   transition: all var(--transition-fast);
   text-decoration: none;
   border: 1px solid transparent;
@@ -96,15 +102,16 @@
 
 .nav-link:hover {
   color: var(--text-primary);
-  background-color: var(--bg-tertiary);
+  background-color: rgba(255, 255, 255, 0.05);
   text-decoration: none;
 }
 
 .nav-link.active {
-  color: var(--color-blue-text);
-  background-color: var(--color-blue-subtle);
-  border-color: var(--color-blue-border);
-  font-weight: 600;
+  color: #ffffff;
+  background-color: rgba(255, 85, 0, 0.14);
+  border-color: var(--color-red);
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.2);
 }
 
 .nav-actions {

@@ -20,10 +20,13 @@
     })();
   </script>
 
-  <!-- Typography: Inter for clean UI, JetBrains Mono for hashes and telemetry -->
+  <!-- Typography: Chakra Petch for bold chamfered headings, Inter for UI, JetBrains Mono & Space Mono for code -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- 3D Library for Revolving Chain -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/base.css" />
@@ -31,118 +34,177 @@
   <link rel="stylesheet" href="css/pages.css" />
 </head>
 <body>
-  <div id="app">
-    <!-- Top System Telemetry Banner -->
-    <div class="demo-banner">
-      <div class="demo-banner-left">
-        <span class="status-dot green"></span>
-        <span class="font-mono banner-title">BAYORA SEC-AI // LEVEL 4 ENCLAVE</span>
-        <span class="banner-divider">|</span>
-        <span class="banner-muted">Client LLM Target:</span>
-        <span class="banner-highlight">ISOLATED (Mediated Invocations Only)</span>
-      </div>
-      <div class="demo-banner-right">
-        <span id="banner-db-status" class="banner-db-badge">DB: In-Memory PostgreSQL (pg-mem)</span>
-        <span class="banner-divider">|</span>
-        <span class="banner-muted">Tenant Isolation: <strong class="text-emerald">100% Active</strong></span>
-        <span class="banner-divider">|</span>
-        <span class="font-mono banner-subtle">BUILD 2026.10-MVP</span>
-      </div>
-    </div>
+  <div id="app" class="efferd-layout">
+    <!-- Efferd Modern SaaS Sidebar -->
+    <aside class="efferd-sidebar" id="efferd-sidebar">
+      <a href="#landing" class="efferd-brand" title="Bayora Enclave Overview">
+        <div class="efferd-brand-icon">
+          <span class="efferd-brand-dot"></span>
+          <span class="efferd-brand-dot orange"></span>
+          <span class="efferd-brand-dot blue"></span>
+          <span class="efferd-brand-dot"></span>
+        </div>
+        <span class="efferd-brand-title">Bayora</span>
+      </a>
 
-    <!-- Navigation Bar -->
-    <header class="navbar">
-      <div class="nav-container">
-        <a href="#landing" class="nav-brand">
-          <div class="brand-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
+      <!-- Product Section -->
+      <div class="efferd-section-label">Product</div>
+      <ul class="efferd-nav-list">
+        <li>
+          <a href="#red-team" class="efferd-nav-item" id="side-nav-red">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
             </svg>
-          </div>
-          <div class="brand-title">
-            BAYORA
-            <span class="brand-tag">SEC-AI</span>
-          </div>
+            Red Team
+          </a>
+        </li>
+        <li>
+          <a href="#blue-team" class="efferd-nav-item" id="side-nav-blue">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Blue Team
+          </a>
+        </li>
+        <li>
+          <a href="#evaluation" class="efferd-nav-item" id="side-nav-eval">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            Analytics & Pipeline
+          </a>
+        </li>
+      </ul>
+
+      <!-- Workspace Section -->
+      <div class="efferd-section-label">Workspace</div>
+      <ul class="efferd-nav-list">
+        <li>
+          <a href="#red-team" class="efferd-nav-item" id="side-nav-team">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Team
+          </a>
+        </li>
+        <li>
+          <a href="#security-events" class="efferd-nav-item" id="side-nav-events">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            Integrations & Traps
+          </a>
+        </li>
+        <li>
+          <a href="#admin" class="efferd-nav-item" id="side-nav-admin">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+            API Keys & Ledger
+          </a>
+        </li>
+      </ul>
+
+      <!-- Administration Section -->
+      <div class="efferd-section-label">Administration</div>
+      <ul class="efferd-nav-list">
+        <li>
+          <a href="#admin" class="efferd-nav-item" id="side-nav-settings">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            Settings
+          </a>
+        </li>
+        <li>
+          <a href="#admin" class="efferd-nav-item" id="side-nav-billing">
+            <svg class="efferd-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+            Billing & Audits
+          </a>
+        </li>
+      </ul>
+
+      <!-- Changelog Box matching screenshot -->
+      <div class="efferd-changelog">
+        <div class="efferd-changelog-tag">CHANGELOG</div>
+        <div class="efferd-changelog-title">Product update</div>
+        <div class="efferd-changelog-desc">Performance boosts and UI polish. Enclave Level 4 isolation active.</div>
+        <a href="#landing" class="efferd-changelog-link">Learn more</a>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="efferd-sidebar-footer">
+        <a href="#landing" class="efferd-footer-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Help Center
         </a>
+        <a href="#landing" class="efferd-footer-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Documentation
+        </a>
+        <div style="font-size: 0.72rem; color: #444444; margin-top: 4px;">© 2026 Bayora LLC</div>
+      </div>
+    </aside>
 
-        <!-- Main Navigation Links -->
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#landing" class="nav-link" id="nav-landing">Overview</a></li>
-            <li><a href="#red-team" class="nav-link" id="nav-red">Red Team</a></li>
-            <li><a href="#blue-team" class="nav-link" id="nav-blue">Blue Team</a></li>
-            <li><a href="#evaluation" class="nav-link" id="nav-eval">Evaluation Pipeline</a></li>
-            <li><a href="#admin" class="nav-link" id="nav-admin">Admin & Provenance</a></li>
-            <li><a href="#security-events" class="nav-link" id="nav-events">Security Traps</a></li>
-          </ul>
-        </nav>
+    <!-- Main Wrapper -->
+    <div class="efferd-main-wrapper">
+      <!-- Topbar matching screenshot -->
+      <header class="efferd-topbar" id="efferd-topbar">
+        <div class="efferd-topbar-left">
+          <button class="efferd-collapse-btn" id="efferd-sidebar-toggle" title="Toggle Sidebar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+          </button>
+          <div class="efferd-breadcrumb" id="efferd-breadcrumb">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span id="efferd-page-title">Dashboard</span>
+          </div>
+        </div>
 
-        <!-- Right Side: Active Role, Switcher & Theme Toggle -->
-        <div class="nav-actions">
-          <!-- Role Switcher -->
-          <div class="role-switcher-container">
-            <span class="role-label-tag">Persona:</span>
-            <select id="nav-role-select" class="role-select" title="Switch active persona">
+        <div class="efferd-topbar-right">
+          <!-- Direct Action (plane icon) -->
+          <a href="#evaluation" class="efferd-icon-btn" title="Launch Mediated Evaluation">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </a>
+
+          <!-- Notification Bell -->
+          <a href="#security-events" class="efferd-icon-btn" title="Security Alerts">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="efferd-notif-dot"></span>
+          </a>
+
+          <!-- Persona Select in Topbar -->
+          <div class="role-switcher-container" style="background: #0d0d0d; border-color: #222222; padding: 2px 8px; border-radius: 4px;">
+            <select id="nav-role-select" class="role-select" style="font-size: 0.78rem;">
               <option value="red_team">Red Team (red_operator)</option>
               <option value="blue_team">Blue Team (blue_defender)</option>
               <option value="auditor">Auditor (compliance_auditor)</option>
             </select>
           </div>
 
-          <span id="nav-role-badge" class="badge badge-red">RED TEAM</span>
+          <span id="nav-role-badge" class="badge badge-red" style="padding: 3px 8px; font-size: 0.7rem;">RED TEAM</span>
 
-          <!-- Theme Toggle Button -->
-          <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" title="Switch Light / Dark Theme" aria-label="Toggle visual theme">
-            <!-- Sun icon for switching to light mode -->
-            <svg class="theme-icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <!-- Moon icon for switching to dark mode -->
-            <svg class="theme-icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
-
-          <div class="auth-buttons-group">
-            <a href="#login" class="btn btn-outline btn-sm" id="nav-login-btn">Log In</a>
-            <a href="#register" class="btn btn-primary btn-sm" id="nav-reg-btn">Register</a>
+          <!-- User Avatar with profile -->
+          <div class="efferd-avatar" id="efferd-user-avatar" title="Active Persona Profile">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Main Dynamic Application Container -->
-    <main id="main-content" class="main-content">
-      <!-- Injected dynamically by app.js router -->
-    </main>
-
-    <!-- System Footer -->
-    <footer class="system-footer">
-      <div class="footer-container">
-        <div>
-          <div class="footer-title">Bayora AI Safety Testing Infrastructure</div>
-          <div class="footer-subtitle">
-            Enforcing mutual data isolation, client model protection, and non-repudiable cryptographic evaluation provenance.
-          </div>
-        </div>
-        <div class="footer-meta">
-          <span>SHA-256 LEDGER: ACTIVE</span>
-          <span>•</span>
-          <span>BACKEND RBAC: ENFORCED</span>
-          <span>•</span>
-          <span>TARGET LLM: PROTECTED</span>
-        </div>
-      </div>
-    </footer>
+      <!-- Main Dynamic Application Container -->
+      <main id="main-content" class="efferd-content">
+        <!-- Injected dynamically by app.js router -->
+      </main>
+    </div>
   </div>
 
   <!-- Application Entry Point -->

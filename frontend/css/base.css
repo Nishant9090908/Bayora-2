@@ -46,79 +46,79 @@
 :root:has(> head > meta[name="color-scheme"][content="dark"]) {
   color-scheme: dark;
 
-  /* Surface & Canvas */
-  --bg-canvas: #070b14;
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0e1424;
-  --bg-tertiary: #141c30;
-  --bg-card: rgba(14, 20, 36, 0.78);
-  --bg-card-hover: rgba(20, 30, 52, 0.88);
-  --bg-elevated: #162035;
-  --bg-overlay: rgba(7, 11, 20, 0.88);
-  --bg-mesh: radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.14) 0%, rgba(7, 11, 20, 0) 70%),
-             radial-gradient(circle at 10% 25%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-             radial-gradient(circle at 90% 15%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
+  /* Surface & Canvas (Strict Black & Dark Architectures) */
+  --bg-canvas: #000000;
+  --bg-primary: #060606;
+  --bg-secondary: #0c0c0c;
+  --bg-tertiary: #121212;
+  --bg-card: #0b0b0b;
+  --bg-card-hover: #141414;
+  --bg-elevated: #161616;
+  --bg-overlay: rgba(0, 0, 0, 0.94);
+  --bg-mesh: radial-gradient(circle at 50% -20%, rgba(255, 85, 0, 0.12) 0%, rgba(0, 0, 0, 0) 70%),
+             radial-gradient(circle at 10% 25%, rgba(255, 85, 0, 0.05) 0%, transparent 45%),
+             radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
 
   /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-strong: rgba(255, 255, 255, 0.24);
-  --border-focus: #38bdf8;
-  --ring-focus: rgba(56, 189, 248, 0.28);
+  --border-subtle: #1c1c1c;
+  --border-medium: #262626;
+  --border-strong: #383838;
+  --border-focus: #ff5500;
+  --ring-focus: rgba(255, 85, 0, 0.35);
 
   /* Typography */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #070b14;
+  --text-primary: #ffffff;
+  --text-secondary: #c2c2c2;
+  --text-muted: #808080;
+  --text-inverse: #000000;
 
-  /* Red Team / Attack Palette */
-  --color-red: #f43f5e;
-  --color-red-gradient: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-  --color-red-subtle: rgba(244, 63, 94, 0.12);
-  --color-red-border: rgba(244, 63, 94, 0.32);
-  --color-red-text: #fca5a5;
-  --color-red-glow: 0 0 16px rgba(244, 63, 94, 0.35);
+  /* Red Team / Attack Palette (Electric Orange Accent) */
+  --color-red: #ff5500;
+  --color-red-gradient: linear-gradient(135deg, #ff5500 0%, #cc3300 100%);
+  --color-red-subtle: rgba(255, 85, 0, 0.12);
+  --color-red-border: rgba(255, 85, 0, 0.4);
+  --color-red-text: #ffa64d;
+  --color-red-glow: 0 0 16px rgba(255, 85, 0, 0.4);
 
-  /* Blue Team / Defense Palette */
-  --color-blue: #0ea5e9;
-  --color-blue-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-  --color-blue-subtle: rgba(14, 165, 233, 0.12);
-  --color-blue-border: rgba(14, 165, 233, 0.32);
-  --color-blue-text: #7dd3fc;
-  --color-blue-glow: 0 0 16px rgba(14, 165, 233, 0.35);
+  /* Blue Team / Defense Palette (High-Contrast Cyber White & Amber) */
+  --color-blue: #ffffff;
+  --color-blue-gradient: linear-gradient(135deg, #ffffff 0%, #ff6c1f 100%);
+  --color-blue-subtle: rgba(255, 255, 255, 0.08);
+  --color-blue-border: rgba(255, 255, 255, 0.25);
+  --color-blue-text: #ffffff;
+  --color-blue-glow: 0 0 16px rgba(255, 255, 255, 0.3);
 
-  /* Target LLM & Guardrail Safe Emerald */
-  --color-emerald: #10b981;
-  --color-emerald-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
-  --color-emerald-subtle: rgba(16, 185, 129, 0.12);
-  --color-emerald-border: rgba(16, 185, 129, 0.32);
-  --color-emerald-text: #6ee7b7;
-  --color-emerald-glow: 0 0 16px rgba(16, 185, 129, 0.35);
+  /* Target LLM & Guardrail Safe (Safety Orange) */
+  --color-emerald: #ff8800;
+  --color-emerald-gradient: linear-gradient(135deg, #ffa64d 0%, #ff5500 100%);
+  --color-emerald-subtle: rgba(255, 136, 0, 0.14);
+  --color-emerald-border: rgba(255, 136, 0, 0.4);
+  --color-emerald-text: #ffc285;
+  --color-emerald-glow: 0 0 16px rgba(255, 136, 0, 0.4);
 
-  /* Auditor & Cryptographic Provenance Purple */
-  --color-purple: #a855f7;
-  --color-purple-gradient: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);
-  --color-purple-subtle: rgba(168, 85, 247, 0.12);
-  --color-purple-border: rgba(168, 85, 247, 0.32);
-  --color-purple-text: #d8b4fe;
-  --color-purple-glow: 0 0 16px rgba(168, 85, 247, 0.35);
+  /* Auditor & Cryptographic Provenance (Monospace White with Orange Highlights) */
+  --color-purple: #ffffff;
+  --color-purple-gradient: linear-gradient(135deg, #ffffff 0%, #ff6c1f 100%);
+  --color-purple-subtle: rgba(255, 255, 255, 0.08);
+  --color-purple-border: rgba(255, 85, 0, 0.35);
+  --color-purple-text: #ffffff;
+  --color-purple-glow: 0 0 16px rgba(255, 85, 0, 0.35);
 
-  /* Amber Alert Palette */
-  --color-amber: #f59e0b;
-  --color-amber-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-  --color-amber-subtle: rgba(245, 158, 11, 0.12);
-  --color-amber-border: rgba(245, 158, 11, 0.32);
-  --color-amber-text: #fcd34d;
-  --color-amber-glow: 0 0 16px rgba(245, 158, 11, 0.35);
+  /* Amber Alert Palette (Vibrant Orange) */
+  --color-amber: #ff6c1f;
+  --color-amber-gradient: linear-gradient(135deg, #ff8800 0%, #d94400 100%);
+  --color-amber-subtle: rgba(255, 108, 31, 0.14);
+  --color-amber-border: rgba(255, 108, 31, 0.4);
+  --color-amber-text: #ffaa55;
+  --color-amber-glow: 0 0 16px rgba(255, 108, 31, 0.4);
 
   /* Shadows & Glassmorphism */
-  --card-blur: blur(16px);
+  --card-blur: blur(12px);
   --card-shine: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.65), 0 4px 10px -3px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 25px -5px rgba(14, 165, 233, 0.25);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.7);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 85, 0, 0.15);
+  --shadow-glow: 0 0 25px -4px rgba(255, 85, 0, 0.35);
 }
 
 /* ==========================================================================
@@ -272,6 +272,14 @@ a:hover {
   flex-direction: column;
   flex: 1;
   min-height: 100vh;
+}
+
+#app.efferd-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  min-height: 100vh !important;
 }
 
 .main-content {

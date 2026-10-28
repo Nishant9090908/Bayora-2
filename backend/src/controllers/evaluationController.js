@@ -55,10 +55,12 @@ async function createEvaluation(req, res, next) {
       }
     }
 
+    const resolvedDefenseId = defenseId || (defense && defense.id) || null;
+
     // Execute 4-Stage Mediated Evaluation (Pre-filter -> Ollama -> Safety Judge -> Provenance Hash)
     const evalResult = await executeEvaluation({
       promptId: promptId || null,
-      defenseId: defenseId || defense.id || null,
+      defenseId: resolvedDefenseId,
       promptText,
       attackCategory,
       defense,
@@ -74,7 +76,7 @@ async function createEvaluation(req, res, next) {
       [
         evalId,
         promptId || null,
-        defenseId || null,
+        resolvedDefenseId,
         req.user.id,
         evalResult.targetModel,
         evalResult.overallOutcome,
@@ -158,8 +160,8 @@ async function verifyEvaluationProvenance(req, res, next) {
     }
 
     const verification = verifyProvenanceHash({
-      promptId: ev.prompt_id,
-      defenseId: ev.defense_id,
+      promptId: ev.prompt_id || parsedRaw.promptId || null,
+      defenseId: ev.defense_id || parsedRaw.defenseId || null,
       promptText: parsedRaw.promptText || '',
       defenseConfig: { name: parsedRaw.defenseName, systemPrompt: parsedRaw.defenseSystemPrompt },
       outcome: ev.overall_outcome,

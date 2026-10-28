@@ -10,6 +10,7 @@ const { requireRole } = require('../middleware/rbac');
 
 // Create/commit evaluation run with cryptographic provenance
 router.post('/', authenticate, evaluationController.createEvaluation);
+router.post('/run', authenticate, evaluationController.createEvaluation);
 
 // List evaluations (projected according to caller's clearance)
 router.get('/', authenticate, evaluationController.listEvaluations);
@@ -22,5 +23,7 @@ router.get('/:id', authenticate, evaluationController.getEvaluationById);
 
 // Verify cryptographic provenance hash against stored digest (Admin only)
 router.get('/:id/verify', authenticate, requireRole('admin'), evaluationController.verifyEvaluationProvenance);
+router.post('/:id/verify', authenticate, requireRole('admin'), evaluationController.verifyEvaluationProvenance);
 
 module.exports = router;
+

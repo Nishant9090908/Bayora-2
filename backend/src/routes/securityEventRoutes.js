@@ -12,5 +12,6 @@ router.get('/', authenticate, requireRole('admin'), securityEventController.list
 
 // Simulate an unauthorized cross-team breach attempt for live testing
 router.post('/simulate', authenticate, securityEventController.simulateBreach);
+router.post('/simulate-breach', authenticate, securityEventController.simulateBreach);
 
 module.exports = router;

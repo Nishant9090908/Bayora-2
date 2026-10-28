@@ -12,11 +12,15 @@ const { validatePrompt } = require('../middleware/validation');
 
 // Submit attack scenario
 router.post('/prompts', authenticate, requireRole('red_team', 'admin'), validatePrompt, redTeamController.createPrompt);
+router.post('/attacks', authenticate, requireRole('red_team', 'admin'), validatePrompt, redTeamController.createPrompt);
 
 // List owner-scoped attack scenarios
 router.get('/prompts', authenticate, requireRole('red_team', 'admin'), redTeamController.listPrompts);
+router.get('/attacks', authenticate, requireRole('red_team', 'admin'), redTeamController.listPrompts);
 
 // Get attack scenario by ID
 router.get('/prompts/:id', authenticate, requireRole('red_team', 'admin'), redTeamController.getPromptById);
+router.get('/attacks/:id', authenticate, requireRole('red_team', 'admin'), redTeamController.getPromptById);
 
 module.exports = router;
+

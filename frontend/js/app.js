@@ -42,7 +42,21 @@ class AppState {
       });
     }
 
-    // 4. Initial database and health check
+    // 4. Setup Sidebar Collapse Toggle
+    const sidebarToggle = document.getElementById("efferd-sidebar-toggle");
+    const sidebar = document.getElementById("efferd-sidebar");
+    const mainWrapper = document.querySelector(".efferd-main-wrapper");
+    if (sidebarToggle && sidebar) {
+      sidebarToggle.addEventListener("click", () => {
+        const isHidden = sidebar.style.display === "none";
+        sidebar.style.display = isHidden ? "flex" : "none";
+        if (mainWrapper) {
+          mainWrapper.style.width = isHidden ? "calc(100% - 250px)" : "100%";
+        }
+      });
+    }
+
+    // 5. Initial database and health check
     apiClient.checkHealth();
 
     this.updateNavBadges();
@@ -121,8 +135,8 @@ class AppState {
     const content = document.getElementById("main-content");
     if (!content) return;
 
-    // Update active nav links
-    document.querySelectorAll(".nav-link").forEach(link => {
+    // Update active nav links in legacy and Efferd sidebars
+    document.querySelectorAll(".nav-link, .efferd-nav-item").forEach(link => {
       if (link.getAttribute("href") === hash) {
         link.classList.add("active");
       } else {
@@ -130,7 +144,37 @@ class AppState {
       }
     });
 
+    // Update topbar breadcrumb title matching Efferd
+    const pageTitleEl = document.getElementById("efferd-page-title");
+    if (pageTitleEl) {
+      const titleMap = {
+        "#landing": "Overview",
+        "#red-team": "Red Team (Offensive Testing)",
+        "#blue-team": "Blue Team (Defensive Architecture)",
+        "#evaluation": "Analytics & Pipeline (Ollama Mediator)",
+        "#admin": "API Keys & Ledger",
+        "#security-events": "Integrations & Traps",
+        "#login": "Authentication",
+        "#register": "New Registration"
+      };
+      pageTitleEl.textContent = titleMap[hash] || "Dashboard";
+    }
+
     window.scrollTo(0, 0);
+
+    // Sync active role indicator with current view domain
+    if (hash === "#blue-team") {
+      this.setUserRole("blue_team", "blue_defender");
+    } else if (hash === "#red-team") {
+      this.setUserRole("red_team", "red_operator");
+    }
+
+    // Toggle dedicated landing full-screen architectural layout
+    if (hash === "#" || hash === "#landing") {
+      document.body.classList.add("landing-mode");
+    } else {
+      document.body.classList.remove("landing-mode");
+    }
 
     // Route dispatch
     switch (hash) {

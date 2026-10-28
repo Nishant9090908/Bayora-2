@@ -54,7 +54,16 @@ app.use('/api/blue', blueTeamRoutes);
 app.use('/api/evaluations', evaluationRoutes);
 app.use('/api/security-events', securityEventRoutes);
 
-// 404 Route Catch-all
+// Serve Static Frontend Application
+const path = require('path');
+const frontendPath = path.resolve(__dirname, '../../frontend');
+app.use(express.static(frontendPath));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// 404 Route Catch-all for API and missing assets
 app.use((req, res) => {
   res.status(404).json({
     error: `Resource not found: ${req.method} ${req.originalUrl}`
